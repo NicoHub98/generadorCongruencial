@@ -11,16 +11,16 @@ const Resultado = () => {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th>Pos.</th>
+              <th scope="col">Pos.</th>
               <th scope="col">Semilla</th>
               <th scope="col">Resultado</th>
             </tr>
           </thead>
           <tbody>
             {React.Children.toArray(
-              arrayResultado.map(({ i, arraySeed, arrayRes }) => (
+              arrayResultado.map(({ id, arraySeed, arrayRes }) => (
                 <tr>
-                  <td>{i}</td>
+                  <th scope="row">{id}</th>
                   <td>{arraySeed}</td>
                   <td>{arrayRes}</td>
                 </tr>

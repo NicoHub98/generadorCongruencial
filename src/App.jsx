@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Formula from "./components/Formula";
 import Formulario from "./components/Formulario";
 import Resultado from "./components/Resultado";
+import Uniformes from "./components/Uniformes";
 import { GlobalContext } from "./context/GlobalContext";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const [iteraciones, setIteraciones] = useState(4);
   const [arrayResultado, setArrayResultado] = useState([
     {
+      id: 0,
       arraySeed: 0,
       arrayRes: 0,
     },
@@ -27,19 +29,19 @@ function App() {
     //Fórmula
     for (let i = 0; i < iteraciones; i++) {
       let calc = _seed + _cteA * _cteMult;
-      console.log("seed: " + _seed);
       let calcDiv = (_seed + _cteA * _cteMult) / _module;
       let total = calc - _module * Math.trunc(calcDiv);
-      console.log("total: " + total);
       if (i == 0) {
-        newArray = [{ arraySeed: _seed, arrayRes: total }];
+        newArray = [{ id: i + 1, arraySeed: _seed, arrayRes: total }];
       } else {
-        newArray = [...newArray, { arraySeed: _seed, arrayRes: total }];
+        newArray = [
+          ...newArray,
+          { id: i + 1, arraySeed: _seed, arrayRes: total },
+        ];
       }
       _seed = total;
     }
     setArrayResultado(newArray);
-    console.log(arrayResultado);
   };
 
   return (
@@ -57,6 +59,7 @@ function App() {
         setIteraciones,
         handleSubmit,
         arrayResultado,
+        setArrayResultado,
       }}
     >
       <h1 className="text-center my-3">Calculadora Congruencial</h1>
@@ -70,6 +73,7 @@ function App() {
         </div>
         <div className="col-md">
           <Formula />
+          <Uniformes />
         </div>
       </div>
     </GlobalContext.Provider>

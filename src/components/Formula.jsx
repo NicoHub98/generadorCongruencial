@@ -2,7 +2,7 @@ import React from "react";
 
 const Formula = () => {
   return (
-    <div className=" d-inline-block">
+    <div className="container">
       <h3>Fórmula general</h3>
       <img
         className="img-fluid "
