@@ -6,8 +6,8 @@ const Formulario = () => {
   const {
     seed,
     setSeed,
-    cteA,
-    setCteA,
+    cteC,
+    setCteC,
     cteMult,
     setCteMult,
     module,
@@ -33,20 +33,20 @@ const Formulario = () => {
             onChange={(e) => setSeed(e.target.value)}
             value={seed}
           />
-          {/* Cte. A */}
-          <label htmlFor="cteA" className="form-label mt-3">
-            Constante A:
+          {/* Cte. C */}
+          <label htmlFor="cteC" className="form-label mt-3">
+            Constante C:
           </label>
           <input
             type="number"
             className="form-control"
-            id="cteA"
-            onChange={(e) => setCteA(e.target.value)}
-            value={cteA}
+            id="cteC"
+            onChange={(e) => setCteC(e.target.value)}
+            value={cteC}
           />
-          {/* Cte. Multiplicadora */}
+          {/* Cte. Multiplicadora A */}
           <label htmlFor="cteMult" className="form-label mt-3">
-            Constante Multiplicadora:
+            Constante Multiplicadora A:
           </label>
           <input
             type="number"
