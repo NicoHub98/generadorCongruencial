@@ -1,63 +1,78 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Formula from "./components/Formula";
+import Formulario from "./components/Formulario";
+import Resultado from "./components/Resultado";
+import { GlobalContext } from "./context/GlobalContext";
 
 function App() {
   const [seed, setSeed] = useState(7343);
   const [cteA, setCteA] = useState(4781);
   const [cteMult, setCteMult] = useState(9387);
   const [module, setModule] = useState(9999);
+  const [iteraciones, setIteraciones] = useState(4);
+  const [arrayResultado, setArrayResultado] = useState([
+    {
+      arraySeed: 0,
+      arrayRes: 0,
+    },
+  ]);
+  let _seed = seed,
+    _cteA = cteA,
+    _cteMult = cteMult,
+    _module = module;
+  const handleSubmit = (e, iteraciones) => {
+    // setArrayResultado([{ arraySeed: null, arrayRes: null }]);
+    e.preventDefault();
+    let newArray = [{ arraySeed: 0, arrayRes: 0 }];
+    //Fórmula
+    for (let i = 0; i < iteraciones; i++) {
+      let calc = _seed + _cteA * _cteMult;
+      console.log("seed: " + _seed);
+      let calcDiv = (_seed + _cteA * _cteMult) / _module;
+      let total = calc - _module * Math.trunc(calcDiv);
+      console.log("total: " + total);
+      if (i == 0) {
+        newArray = [{ arraySeed: _seed, arrayRes: total }];
+      } else {
+        newArray = [...newArray, { arraySeed: _seed, arrayRes: total }];
+      }
+      _seed = total;
+    }
+    setArrayResultado(newArray);
+    console.log(arrayResultado);
+  };
 
   return (
-    <>
+    <GlobalContext.Provider
+      value={{
+        seed,
+        setSeed,
+        cteA,
+        setCteA,
+        cteMult,
+        setCteMult,
+        module,
+        setModule,
+        iteraciones,
+        setIteraciones,
+        handleSubmit,
+        arrayResultado,
+      }}
+    >
       <h1 className="text-center my-3">Calculadora Congruencial</h1>
-      <div className="container">
-        <form onSubmit="{}">
-          {/* Seed */}
-          <label htmlFor="seed" className="form-label">
-            Semilla:
-          </label>
-          <input
-            type="number"
-            className="form-control w-25"
-            id="seed"
-            onChange={(e) => setSeed(e.target.value)}
-            value={seed}
-          />
-          {/* Cte. A */}
-          <label htmlFor="cteA" className="form-label mt-3">
-            Constante A:
-          </label>
-          <input
-            type="number"
-            className="form-control w-25"
-            id="cteA"
-            onChange={(e) => setCteA(e.target.value)}
-            value={cteA}
-          />
-          {/* Cte. Multiplicadora */}
-          <label htmlFor="cteMult" className="form-label mt-3">
-            Constante Multiplicadora:
-          </label>
-          <input
-            type="number"
-            className="form-control w-25"
-            id="cteMult"
-            onChange={(e) => setCteMult(e.target.value)}
-            value={cteMult}
-          />
-          {/* Módulo M */}
-          <label htmlFor="module" className="form-label mt-3">
-            Módulo M:
-          </label>
-          <input
-            type="number"
-            className="form-control w-25"
-            id="module"
-            onChange={(e) => setModule(e.target.value)}
-            value={module}
-          />
-        </form>
+
+      <div className="row justify-content-md-center">
+        <div className="col-md-4">
+          <Formulario />
+        </div>
+        <div className="col-md-4">
+          <Resultado />
+        </div>
+        <div className="col-md">
+          <Formula />
+        </div>
       </div>
-    </>
+    </GlobalContext.Provider>
   );
 }
 
