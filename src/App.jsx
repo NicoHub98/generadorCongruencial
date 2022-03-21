@@ -55,15 +55,19 @@ function App() {
           {
             cc: total / (module - 1),
             ca: total / module,
-            aa: (total + 0.5) / module,
-            ac: (total + 1) / module,
+            aa: (total + Number(0.5)) / module,
+            ac: (total + Number(1)) / module,
           },
         ];
       }
-      // console.log(newArrayU);
       _seed = total;
     }
+    console.log(newArrayU);
     setArrayResultado(newArray);
+    setArrayUniforme(newArrayU);
+    let y = 0.4545488888888;
+    y = Math.trunc(y * Math.pow(10, 8)) / Math.pow(10, 8);
+    console.log(y);
   };
 
   return (
@@ -94,7 +98,7 @@ function App() {
         <div className="col-md-4">
           <Resultado />
         </div>
-        <div className="col-md">
+        <div className="col-md-4">
           <Formula />
           <Uniformes />
         </div>

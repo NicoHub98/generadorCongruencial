@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 
 const Uniformes = () => {
-  const { arrayResultado } = useContext(GlobalContext);
+  const { arrayUniforme } = useContext(GlobalContext);
 
   return (
     <>
@@ -19,12 +19,24 @@ const Uniformes = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
+            {React.Children.toArray(
+              arrayUniforme.map(({ cc, ca, aa, ac }) => (
+                <tr>
+                  <td>
+                    {(cc = Math.trunc(cc * Math.pow(10, 8)) / Math.pow(10, 8))}
+                  </td>
+                  <td>
+                    {(ca = Math.trunc(ca * Math.pow(10, 8)) / Math.pow(10, 8))}
+                  </td>
+                  <td>
+                    {(aa = Math.trunc(aa * Math.pow(10, 8)) / Math.pow(10, 8))}
+                  </td>
+                  <td>
+                    {(ac = Math.trunc(ac * Math.pow(10, 8)) / Math.pow(10, 8))}
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
