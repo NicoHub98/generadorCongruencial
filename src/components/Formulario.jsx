@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
+import Error from "./Error";
 
 const Formulario = () => {
   const {
@@ -16,6 +17,7 @@ const Formulario = () => {
     setIteraciones,
     handleSubmit,
     handleLimpiar,
+    error,
   } = useContext(GlobalContext);
 
   return (
@@ -77,6 +79,7 @@ const Formulario = () => {
             onChange={(e) => setIteraciones(e.target.value)}
             value={iteraciones}
           />
+          {error && <Error />}
           <div className="position-relative">
             <button type="submit" className="btn btn-primary my-3">
               Resolver

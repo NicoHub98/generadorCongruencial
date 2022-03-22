@@ -9,7 +9,7 @@ const Uniformes = () => {
     <>
       <div className="container my-3">
         <h4 className="text-center">Uniformes</h4>
-        <table className="table">
+        <table className="table table-striped">
           <thead>
             <tr>
               <th>U[0;1]</th>
