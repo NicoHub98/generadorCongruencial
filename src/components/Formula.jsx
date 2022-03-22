@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Formula = () => {
+  const [verFormula, setVerFormula] = useState(false);
+
   return (
     <div className="container text-center ">
       <button
@@ -10,8 +12,9 @@ const Formula = () => {
         data-bs-target="#collapseExample"
         aria-expanded="false"
         aria-controls="collapseExample"
+        onClick={() => setVerFormula(!verFormula)}
       >
-        Ver Fórmula
+        {verFormula ? "Cerrar" : "Ver Fórmula"}
       </button>
       <div className="collapse" id="collapseExample">
         <div className="card card-body">

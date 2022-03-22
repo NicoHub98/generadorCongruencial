@@ -14,7 +14,7 @@ const Resultado = () => {
             <tr>
               <th scope="col">Pos.</th>
               <th scope="col">Semilla</th>
-              <th scope="col">Resultado</th>
+              <th scope="col">N° Generado</th>
             </tr>
           </thead>
           <tbody>

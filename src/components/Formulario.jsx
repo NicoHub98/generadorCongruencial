@@ -70,7 +70,7 @@ const Formulario = () => {
           />
           {/* Iteraciones */}
           <label htmlFor="module" className="form-label mt-3">
-            Cantidad de Iteraciones:
+            Iteraciones:
           </label>
           <input
             type="number"

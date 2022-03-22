@@ -101,7 +101,7 @@ function App() {
         error,
       }}
     >
-      <h1 className="text-center my-3">Calculadora Congruencial</h1>
+      <h1 className="text-center my-3">Generador Congruencial</h1>
       <Formula />
       <hr />
       <div className="row justify-content-md-center">
