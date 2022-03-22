@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Footer from "./components/Footer";
 import Formula from "./components/Formula";
 import Formulario from "./components/Formulario";
 import Resultado from "./components/Resultado";
@@ -62,12 +63,15 @@ function App() {
       }
       _seed = total;
     }
-    console.log(newArrayU);
     setArrayResultado(newArray);
     setArrayUniforme(newArrayU);
     let y = 0.4545488888888;
     y = Math.trunc(y * Math.pow(10, 8)) / Math.pow(10, 8);
-    console.log(y);
+  };
+
+  const handleLimpiar = () => {
+    setArrayResultado([{ id: 0, arraySeed: 0, arrayRes: 0 }]);
+    setArrayUniforme([{ cc: 0, ca: 0, aa: 0, ac: 0 }]);
   };
 
   return (
@@ -87,22 +91,24 @@ function App() {
         arrayResultado,
         setArrayResultado,
         arrayUniforme,
+        handleLimpiar,
       }}
     >
       <h1 className="text-center my-3">Calculadora Congruencial</h1>
-
+      <Formula />
+      <hr />
       <div className="row justify-content-md-center">
-        <div className="col-md-4">
+        <div className="col-md-3">
           <Formulario />
         </div>
         <div className="col-md-4">
           <Resultado />
         </div>
         <div className="col-md-4">
-          <Formula />
           <Uniformes />
         </div>
       </div>
+      <Footer />
     </GlobalContext.Provider>
   );
 }

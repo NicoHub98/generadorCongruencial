@@ -8,7 +8,7 @@ const Uniformes = () => {
   return (
     <>
       <div className="container my-3">
-        <h3 className="text-center">Uniformes</h3>
+        <h4 className="text-center">Uniformes</h4>
         <table className="table">
           <thead>
             <tr>

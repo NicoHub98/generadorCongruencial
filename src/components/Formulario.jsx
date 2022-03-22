@@ -15,12 +15,12 @@ const Formulario = () => {
     iteraciones,
     setIteraciones,
     handleSubmit,
-    setArrayResultado,
+    handleLimpiar,
   } = useContext(GlobalContext);
 
   return (
     <>
-      <div className="container sticky-top">
+      <div className="container sticky-top my-3">
         <form onSubmit={(e) => handleSubmit(e, iteraciones)}>
           {/* Seed */}
           <label htmlFor="seed" className="form-label">
@@ -84,9 +84,7 @@ const Formulario = () => {
             <button
               type="button"
               className="btn btn-primary my-3 position-absolute top-0 end-0"
-              onClick={() =>
-                setArrayResultado([{ id: 0, arraySeed: 0, arrayRes: 0 }])
-              }
+              onClick={handleLimpiar}
             >
               Limpiar
             </button>

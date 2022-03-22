@@ -7,7 +7,8 @@ const Resultado = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container my-3">
+        <h4 className="text-center">Resultados</h4>
         <table className="table table-striped">
           <thead>
             <tr>
